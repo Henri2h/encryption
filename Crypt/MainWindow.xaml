@@ -1,0 +1,18 @@
+﻿<Window x:Class="Code.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Code"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="220" Width="343" ResizeMode="CanMinimize">
+    <Grid>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="52" Margin="10,18,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="162"><Run Text="Made By Henri2h"/><LineBreak/><Run Text="Copyright 2016"/></TextBlock>
+        <Button x:Name="btText" Content="Launch the text editor" HorizontalAlignment="Stretch" Height="42" Margin="10,135,10,0" VerticalAlignment="Top" Click="btText_Click"/>
+        <StackPanel Margin="10,90,10,71" Orientation="Horizontal">
+            <TextBlock x:Name="tbInfo" />
+            <GridSplitter />
+            <Button x:Name="btDefaultPath" Content="Select default path" Click="btDefaultPath_Click" Width="70"></Button>
+        </StackPanel>
+    </Grid>
+</Window>

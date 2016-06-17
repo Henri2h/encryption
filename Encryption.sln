@@ -3,7 +3,64 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Code", "Crypt\Code.csproj", "{2915413C-FB76-41AD-B711-2253C4B12E20}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "File encryption", "File encryption\File encryption.csproj", "{13F1BF9E-9886-47C4-B973-668C2D69A6A8}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Crypt installer", "Crypt installer\Crypt installer.vdproj", "{7A7DD36D-9B33-4D27-8FB0-F635E7E97486}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "crypt dll aplication", "dll\crypt dll aplication.csproj", "{1663E2BA-9FA2-4AD0-B786-CC28B74E0B63}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Fileencryption deploy|Any CPU = Fileencryption deploy|Any CPU
+		Release|Any CPU = Release|Any CPU
+		Releqse qll|Any CPU = Releqse qll|Any CPU
+		Start|Any CPU = Start|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2915413C-FB76-41AD-B711-2253C4B12E20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2915413C-FB76-41AD-B711-2253C4B12E20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2915413C-FB76-41AD-B711-2253C4B12E20}.Fileencryption deploy|Any CPU.ActiveCfg = Releqse qll|Any CPU
+		{2915413C-FB76-41AD-B711-2253C4B12E20}.Fileencryption deploy|Any CPU.Build.0 = Releqse qll|Any CPU
+		{2915413C-FB76-41AD-B711-2253C4B12E20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2915413C-FB76-41AD-B711-2253C4B12E20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2915413C-FB76-41AD-B711-2253C4B12E20}.Releqse qll|Any CPU.ActiveCfg = Releqse qll|Any CPU
+		{2915413C-FB76-41AD-B711-2253C4B12E20}.Releqse qll|Any CPU.Build.0 = Releqse qll|Any CPU
+		{2915413C-FB76-41AD-B711-2253C4B12E20}.Start|Any CPU.ActiveCfg = Start|Any CPU
+		{2915413C-FB76-41AD-B711-2253C4B12E20}.Start|Any CPU.Build.0 = Start|Any CPU
+		{13F1BF9E-9886-47C4-B973-668C2D69A6A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13F1BF9E-9886-47C4-B973-668C2D69A6A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13F1BF9E-9886-47C4-B973-668C2D69A6A8}.Fileencryption deploy|Any CPU.ActiveCfg = Fileencryption deploy|Any CPU
+		{13F1BF9E-9886-47C4-B973-668C2D69A6A8}.Fileencryption deploy|Any CPU.Build.0 = Fileencryption deploy|Any CPU
+		{13F1BF9E-9886-47C4-B973-668C2D69A6A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13F1BF9E-9886-47C4-B973-668C2D69A6A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13F1BF9E-9886-47C4-B973-668C2D69A6A8}.Releqse qll|Any CPU.ActiveCfg = Releqse qll|Any CPU
+		{13F1BF9E-9886-47C4-B973-668C2D69A6A8}.Releqse qll|Any CPU.Build.0 = Releqse qll|Any CPU
+		{13F1BF9E-9886-47C4-B973-668C2D69A6A8}.Start|Any CPU.ActiveCfg = Releqse qll|Any CPU
+		{13F1BF9E-9886-47C4-B973-668C2D69A6A8}.Start|Any CPU.Build.0 = Releqse qll|Any CPU
+		{7A7DD36D-9B33-4D27-8FB0-F635E7E97486}.Debug|Any CPU.ActiveCfg = Debug
+		{7A7DD36D-9B33-4D27-8FB0-F635E7E97486}.Debug|Any CPU.Build.0 = Debug
+		{7A7DD36D-9B33-4D27-8FB0-F635E7E97486}.Fileencryption deploy|Any CPU.ActiveCfg = Release
+		{7A7DD36D-9B33-4D27-8FB0-F635E7E97486}.Fileencryption deploy|Any CPU.Build.0 = Release
+		{7A7DD36D-9B33-4D27-8FB0-F635E7E97486}.Release|Any CPU.ActiveCfg = Release
+		{7A7DD36D-9B33-4D27-8FB0-F635E7E97486}.Release|Any CPU.Build.0 = Release
+		{7A7DD36D-9B33-4D27-8FB0-F635E7E97486}.Releqse qll|Any CPU.ActiveCfg = Release
+		{7A7DD36D-9B33-4D27-8FB0-F635E7E97486}.Releqse qll|Any CPU.Build.0 = Release
+		{7A7DD36D-9B33-4D27-8FB0-F635E7E97486}.Start|Any CPU.ActiveCfg = Release
+		{7A7DD36D-9B33-4D27-8FB0-F635E7E97486}.Start|Any CPU.Build.0 = Release
+		{1663E2BA-9FA2-4AD0-B786-CC28B74E0B63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1663E2BA-9FA2-4AD0-B786-CC28B74E0B63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1663E2BA-9FA2-4AD0-B786-CC28B74E0B63}.Fileencryption deploy|Any CPU.ActiveCfg = Releqse qll|Any CPU
+		{1663E2BA-9FA2-4AD0-B786-CC28B74E0B63}.Fileencryption deploy|Any CPU.Build.0 = Releqse qll|Any CPU
+		{1663E2BA-9FA2-4AD0-B786-CC28B74E0B63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1663E2BA-9FA2-4AD0-B786-CC28B74E0B63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1663E2BA-9FA2-4AD0-B786-CC28B74E0B63}.Releqse qll|Any CPU.ActiveCfg = Releqse qll|Any CPU
+		{1663E2BA-9FA2-4AD0-B786-CC28B74E0B63}.Releqse qll|Any CPU.Build.0 = Releqse qll|Any CPU
+		{1663E2BA-9FA2-4AD0-B786-CC28B74E0B63}.Start|Any CPU.ActiveCfg = Releqse qll|Any CPU
+		{1663E2BA-9FA2-4AD0-B786-CC28B74E0B63}.Start|Any CPU.Build.0 = Releqse qll|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
