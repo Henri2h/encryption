@@ -33,21 +33,21 @@ namespace Code
                 return null;
             }
         }
-        public string Method
+        public Method.CryptMethod Methods
         {
             get
             {
-                string method = "";
+                
+
                 if (rbCustom.IsChecked == true)
                 {
-                    method = "custom";
+                    return Method.CryptMethod.custom;
                 }
                 else if (rbAES.IsChecked == true)
                 {
-                    method = "AES";
+                    return Method.CryptMethod.AES;
                 }
-                else { method = "custom"; }
-                return method;
+                else { return Method.CryptMethod.custom; }
             }
         }
         private void Window_ContentRendered(object sender, EventArgs e)

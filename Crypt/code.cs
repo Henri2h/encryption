@@ -14,27 +14,27 @@ namespace Code
         /// must provide methods to encrypt and decrypt nyte[] with a single paswword in byte[]
         /// </summary>
 
-        int total = 256;
+        static int total = 256;
 
-        public byte[] crypt_code(byte[] input_public, byte[] augmentKey)
+        public static byte[] crypt_code(byte[] input_public, byte[] augmentKey)
         {
             int pos = 0;
             List<Byte> output = new List<byte>();
             foreach (byte we in input_public)
+            {
+                int output_int = defNum(Convert.ToInt32(we), augmentKey[pos]);
+                pos++;
+                if (pos >= augmentKey.Length)
                 {
-                   int output_int = defNum(Convert.ToInt32(we), augmentKey[pos]);
-                    pos++;
-                    if (pos >= augmentKey.Length)
-                    {
-                        pos = 0;
-                    }
+                    pos = 0;
+                }
                 output.Add(Convert.ToByte(output_int));
             }
             byte[] result = output.ToArray();
             return result;
         }
 
-        public byte[] crypt_decode(byte[] input_public, byte[] augmentKey)
+        public static byte[] crypt_decode(byte[] input_public, byte[] augmentKey)
         {
             int pos = 0;
             List<byte> ch_byte = new List<byte>();
@@ -42,7 +42,8 @@ namespace Code
             {
                 int output_int = defNum_soustract(Convert.ToInt32(byteInput), augmentKey[pos]);
                 pos++;
-                if(pos >= augmentKey.Length) {
+                if (pos >= augmentKey.Length)
+                {
                     pos = 0;
                 }
                 ch_byte.Add(Convert.ToByte(output_int));
@@ -58,13 +59,13 @@ namespace Code
 
         private static readonly byte[] SALT = new byte[] { 0x26, 0xdc, 0xff, 0x00, 0xad, 0xed, 0x7a, 0xee, 0xc5, 0xfe, 0x07, 0xaf, 0x4d, 0x08, 0x22, 0x3c };
 
-        public byte[] AESEncrypt(byte[] plain, byte[] augmentKey)
+        public static byte[] AESEncrypt(byte[] plain, byte[] augmentKey)
         {
             string password = Encoding.UTF8.GetString(augmentKey);
             MemoryStream memoryStream;
             CryptoStream cryptoStream;
             Rijndael rijndael = Rijndael.Create();
-            Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes( password, SALT);
+            Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(password, SALT);
             Encoding.UTF8.GetBytes(password);
             rijndael.Key = pdb.GetBytes(32);
             rijndael.IV = pdb.GetBytes(16);
@@ -75,7 +76,7 @@ namespace Code
             return memoryStream.ToArray();
         }
 
-        public byte[] AESDecrypt(byte[] cipher, byte[] augmentKey)
+        public static byte[] AESDecrypt(byte[] cipher, byte[] augmentKey)
         {
             string password = Encoding.UTF8.GetString(augmentKey);
             MemoryStream memoryStream;
@@ -92,7 +93,7 @@ namespace Code
         }
 
 
-        private int defNum(int pos, int augment)
+        private static int defNum(int pos, int augment)
         {
             int result = 0;
             if (pos < (total - augment))
@@ -105,7 +106,7 @@ namespace Code
             }
             return result;
         }
-        private int defNum_soustract(int pos, int augment)
+        private static int defNum_soustract(int pos, int augment)
         {
             int result = 0;
             if (0 <= (pos - augment))
