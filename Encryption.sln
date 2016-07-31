@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Code", "Crypt\Code.csproj", "{2915413C-FB76-41AD-B711-2253C4B12E20}"
 EndProject
@@ -22,12 +22,12 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{2915413C-FB76-41AD-B711-2253C4B12E20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2915413C-FB76-41AD-B711-2253C4B12E20}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2915413C-FB76-41AD-B711-2253C4B12E20}.Fileencryption deploy|Any CPU.ActiveCfg = Releqse qll|Any CPU
-		{2915413C-FB76-41AD-B711-2253C4B12E20}.Fileencryption deploy|Any CPU.Build.0 = Releqse qll|Any CPU
+		{2915413C-FB76-41AD-B711-2253C4B12E20}.Fileencryption deploy|Any CPU.ActiveCfg = Start|Any CPU
+		{2915413C-FB76-41AD-B711-2253C4B12E20}.Fileencryption deploy|Any CPU.Build.0 = Start|Any CPU
 		{2915413C-FB76-41AD-B711-2253C4B12E20}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2915413C-FB76-41AD-B711-2253C4B12E20}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2915413C-FB76-41AD-B711-2253C4B12E20}.Releqse qll|Any CPU.ActiveCfg = Releqse qll|Any CPU
-		{2915413C-FB76-41AD-B711-2253C4B12E20}.Releqse qll|Any CPU.Build.0 = Releqse qll|Any CPU
+		{2915413C-FB76-41AD-B711-2253C4B12E20}.Releqse qll|Any CPU.ActiveCfg = Release|Any CPU
+		{2915413C-FB76-41AD-B711-2253C4B12E20}.Releqse qll|Any CPU.Build.0 = Release|Any CPU
 		{2915413C-FB76-41AD-B711-2253C4B12E20}.Start|Any CPU.ActiveCfg = Start|Any CPU
 		{2915413C-FB76-41AD-B711-2253C4B12E20}.Start|Any CPU.Build.0 = Start|Any CPU
 		{13F1BF9E-9886-47C4-B973-668C2D69A6A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
