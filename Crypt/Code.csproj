@@ -210,6 +210,12 @@
       <DefaultIcon>mwade.ico</DefaultIcon>
     </FileAssociation>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Crypt Dll\crypt dll aplication.csproj">
+      <Project>{1663e2ba-9fa2-4ad0-b786-cc28b74e0b63}</Project>
+      <Name>crypt dll aplication</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
