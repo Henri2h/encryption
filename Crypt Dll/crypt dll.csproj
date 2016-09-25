@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1663E2BA-9FA2-4AD0-B786-CC28B74E0B63}</ProjectGuid>
+    <ProjectGuid>{9F9EF8DE-3CF3-4921-A390-9FA4C62FB0C9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>crypt</RootNamespace>
