@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="A=k.cs" />
+    <Compile Include="AdvancedSubsitution.cs" />
     <Compile Include="AES.cs" />
     <Compile Include="analitycs.cs" />
     <Compile Include="Program.cs" />
