@@ -13,6 +13,11 @@ namespace dll_using_sample
     {
         static void Main(string[] args)
         {
+            string text = crypt_dll_aplication.A_k.encodeInMorse(Console.ReadLine());
+            Console.Clear();
+            Console.WriteLine(text);
+            File.WriteAllText(@"D:\morse.txt", text);
+            Console.ReadLine();
             string toAnnalize = File.ReadAllText(@"D:\text.txt");
             analiticValue[] frequency = crypt_dll_aplication.analitycs.analizeFrequency(toAnnalize);
 

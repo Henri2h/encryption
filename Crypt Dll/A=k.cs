@@ -15,6 +15,7 @@ namespace crypt_dll_aplication
         public string morseCode = "";
         public int frequency = 0;
         public int total = 0;
+
         public Data(char letterValue)
         {
             letter = letterValue;
@@ -38,6 +39,8 @@ namespace crypt_dll_aplication
             encryptValue = encryptpos;
             morseCode = morse;
         }
+
+        // return the different value of Data
         public override string ToString()
         {
             StringBuilder SW = new StringBuilder();
@@ -60,6 +63,7 @@ namespace crypt_dll_aplication
                 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
                 '1', '2', '3', '4', '5', '6', '7', '8', '9', '0'
             };
+
             string[] morseCode = { "._", "_...", "_._.", "_..", ".", ".._.", "__.", "....", "..", ".___", "_._" , "._..", "__", "_.", "___", ".__.", "__._", "._.", "...", "_", ".._", "..._", ".__","_.._", "_.__", "__..",
                     ".____","..___", "...__", "...._", ".....", "_....", "__...", "___..", "____.", "_____"
             };
@@ -71,6 +75,7 @@ namespace crypt_dll_aplication
             }
 
         }
+        // crypt and decode
         public static string cryptCustom(string input_public, int augment)
         {
             bool first = true;
@@ -82,7 +87,7 @@ namespace crypt_dll_aplication
             {
                 if (ch != ' ')
                 {
-                    if(!first)
+                    if (!first)
                     {
                         sw.Append(letterSeparator);
                     }
@@ -92,14 +97,14 @@ namespace crypt_dll_aplication
                         sw.Append(letters[pos].encryptValue);
                     }
                     first = false;
-                    
+
                 }
                 else
                 {
                     sw.Append(wordSeperator);
                     first = true;
                 }
-               
+
 
             }
             return sw.ToString();
@@ -121,7 +126,7 @@ namespace crypt_dll_aplication
                         foreach (string letter in chars)
                         {
                             int letterInt = Convert.ToInt32(letter);
-                            int letterPos = findLetter(letterInt);
+                            int letterPos = findEncryptedLetterPos(letterInt);
                             Out.Append(letters[letterPos].letter);
                         }
                         Out.Append(" ");
@@ -131,6 +136,32 @@ namespace crypt_dll_aplication
             }
             return Out.ToString();
         }
+
+        // encode in morse
+        public static string encodeInMorse(string text)
+        {
+            settings(0);
+
+            StringBuilder builder = new StringBuilder();
+            bool wasLetter = false;
+            foreach (char ch in text)
+            {
+                if (ch != ' ')
+                {
+                    if (wasLetter == true) { builder.Append(letterSeparator); }
+                    builder.Append(returnMorse(ch));
+                    wasLetter = true;
+                }
+                else
+                {
+                    builder.Append(wordSeperator);
+                    wasLetter = false;
+                }
+            }
+            return builder.ToString();
+        }
+
+
         private static int augmentDefine(int pos, int augment)
         {
             int total = defTotal(complexe);
@@ -165,7 +196,7 @@ namespace crypt_dll_aplication
             }
             return -1;
         }
-        public static int findLetter(int letterCryptValue)
+        public static int findEncryptedLetterPos(int letterCryptValue)
         {
             foreach (Data letter in letters)
             {
@@ -175,6 +206,12 @@ namespace crypt_dll_aplication
                 }
             }
             return -1;
+        }
+
+        public static string returnMorse(char letter)
+        {
+            int selectedLetterPos = findLetterPos(letter);
+            return letters[selectedLetterPos].morseCode;
         }
     }
 }
