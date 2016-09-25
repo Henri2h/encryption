@@ -13,31 +13,42 @@ namespace dll_using_sample
     {
         static void Main(string[] args)
         {
-            string text = crypt_dll_aplication.A_k.encodeInMorse(Console.ReadLine());
-            Console.Clear();
-            Console.WriteLine(text);
-            File.WriteAllText(@"D:\morse.txt", text);
+            //morse
+            string plainMorse = Console.ReadLine();
+            string morse = crypt_dll_aplication.A_k.encodeInMorse(plainMorse);
+            Console.WriteLine(morse);
             Console.ReadLine();
-            string toAnnalize = File.ReadAllText(@"D:\text.txt");
-            analiticValue[] frequency = crypt_dll_aplication.analitycs.analizeFrequency(toAnnalize);
+            Console.Clear();
+
+            // analising
+            int augment = 10;
+            string plain = Console.ReadLine();
+
+            string encrypted = crypt_dll_aplication.A_k.cryptCustom(plain, augment);
+            string decrypted = crypt_dll_aplication.A_k.decodeCustom(encrypted, augment);
+
+            Console.WriteLine("Encrypted : " + encrypted);
+            Console.WriteLine("Decrypted : " + decrypted);
+
+            //encrypted
+            File.WriteAllText(@"D:\plain.txt", plain);
+            File.WriteAllText(@"D:\encrypted.txt", encrypted);
+
+            //morse
+            File.WriteAllText(@"D:\morse.txt", morse);
+            File.WriteAllText(@"D:\plainMorse.txt", plainMorse);
+
+            Console.ReadKey();
+        }
+
+        public static void analize(string text)
+        {
+            analiticValue[] frequency = crypt_dll_aplication.analitycs.analizeFrequency(text);
 
             foreach (analiticValue letter in frequency)
             {
                 Console.WriteLine(letter.letter + " : " + letter.frequency);
             }
-
-
-            Console.Write("To encrypt : ");
-            string plain = Console.ReadLine();
-            Console.Write("Augment : ");
-            int augment = Convert.ToInt32(Console.ReadLine());
-            string encrypted = crypt_dll_aplication.A_k.cryptCustom(plain, augment);
-
-            Console.WriteLine("Encrypted : " + encrypted);
-
-            string decrypted = crypt_dll_aplication.A_k.decodeCustom(encrypted, augment);
-            Console.WriteLine("Decrypted : " + decrypted);
-            Console.ReadKey();
         }
     }
 }
