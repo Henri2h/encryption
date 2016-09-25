@@ -1,0 +1,4 @@
+﻿TODO :
+
+For analitycs :
+[26/09/2016] : make the program analize the frequency of the size of the words

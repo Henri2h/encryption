@@ -17,16 +17,21 @@ namespace crypt_dll_aplication
     }
     public static class analiticsValues
     {
-        public enum sortingOption
+        public enum sortingOptions
         {
             byFrequency,
             byLetter
         }
         public static List<analiticValue> values = new List<analiticValue>();
+
+        // add the value
         public static void Add(analiticValue val)
         {
             values.Add(val);
         }
+
+        // sort the letters in the list
+        // TODO : change it in order to sort by frequency or letter position
         public static void Sort()
         {
             List<int> valueList = new List<int>();
@@ -75,6 +80,7 @@ namespace crypt_dll_aplication
     }
     public static class analitycs
     {
+        //analize the frequency of the letters
         public static analiticValue[] analizeFrequency(string input)
         {
             int totalLetters = 0;
