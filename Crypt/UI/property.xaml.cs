@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text;
 using System.Windows;
-
-namespace Code
+namespace Code.UI
 {
     /// <summary>
     /// Logique d'interaction pour property.xaml

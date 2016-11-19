@@ -7,8 +7,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Xml;
+using crypt_dll_aplication;
+using crypt;
 
-namespace Code
+namespace Code.Core
 {
     /// <summary>
     /// This class is used to open, modify and close the tdx files
@@ -72,11 +74,11 @@ namespace Code
                         if (TextEditor.current.CryptMethod == Method.CryptMethod.custom)
                         {
                             // charge the code class witch allow to crypt and decrypt the text
-                            ByteOutput = code.crypt_decode(ByteInput, TextEditor.current.augmentKey.ToArray());
+                            ByteOutput = cryptByte.crypt_decode(ByteInput, TextEditor.current.augmentKey.ToArray());
                         }
                         else if (TextEditor.current.CryptMethod == Method.CryptMethod.AES)
                         {
-                            ByteOutput = code.AESDecrypt(ByteInput, TextEditor.current.augmentKey.ToArray());
+                            ByteOutput = AES.AESDecrypt(ByteInput, TextEditor.current.augmentKey.ToArray());
                         }
                         else if (TextEditor.current.CryptMethod == Method.CryptMethod.clear)
                         {
@@ -149,12 +151,12 @@ namespace Code
                             if (TextEditor.current.CryptMethod == Method.CryptMethod.custom)
                             {
                                 // charge the code class witch allow to crypt and decrypt the text
-                                ByteOutput = code.crypt_decode(ByteInput, TextEditor.current.augmentKey.ToArray());
+                                ByteOutput = cryptByte.crypt_decode(ByteInput, TextEditor.current.augmentKey.ToArray());
                             }
                             // AES
                             else if (TextEditor.current.CryptMethod == Method.CryptMethod.AES)
                             {
-                                ByteOutput = code.AESDecrypt(ByteInput, TextEditor.current.augmentKey.ToArray());
+                                ByteOutput = AES.AESDecrypt(ByteInput, TextEditor.current.augmentKey.ToArray());
                             }
                             // if the cryptMethod is clear and toCrypt = true, should not append
                             else if (TextEditor.current.CryptMethod == Method.CryptMethod.clear)
@@ -173,12 +175,12 @@ namespace Code
                         // nothing to do
                     }
                     StringBuilder sb = new StringBuilder();
-                    foreach(string input in lines)
+                    foreach (string input in lines)
                     {
                         sb.AppendLine(input);
                     }
 
-                    TextEditor.current.textbox.Text = sb.ToString();
+                    TextEditor.current.UITbText.Text = sb.ToString();
 
                     // this text is a xmlFile
                     TextEditor.current.isXml = true;
@@ -188,7 +190,7 @@ namespace Code
                 catch (Exception e)
                 {
                     MessageBox.Show(e.ToString());
-                    TextEditor.current.textbox.Text = File.ReadAllText(TextEditor.current.fileName, Encoding.UTF8);
+                    TextEditor.current.UITbText.Text = File.ReadAllText(TextEditor.current.fileName, Encoding.UTF8);
                     TextEditor.current.isXml = false;
                     System.Diagnostics.Debug.WriteLine(e);
                 }
@@ -246,7 +248,7 @@ namespace Code
                     doc.AppendChild(document);
 
 
-                    using (StringReader sr = new StringReader(TextEditor.current.textbox.Text))
+                    using (StringReader sr = new StringReader(TextEditor.current.UITbText.Text))
                     {
                         string line = "";
                         while ((line = sr.ReadLine()) != null)
@@ -268,12 +270,12 @@ namespace Code
                                 if (TextEditor.current.CryptMethod == Method.CryptMethod.custom)
                                 {
 
-                                    ByteOutput = code.crypt_code(ByteInput, TextEditor.current.augmentKey.ToArray());
+                                    ByteOutput = cryptByte.crypt_code(ByteInput, TextEditor.current.augmentKey.ToArray());
                                 }
                                 // AES
                                 else if (TextEditor.current.CryptMethod == Method.CryptMethod.AES)
                                 {
-                                    ByteOutput = code.AESEncrypt(ByteInput, TextEditor.current.augmentKey.ToArray());
+                                    ByteOutput = AES.AESEncrypt(ByteInput, TextEditor.current.augmentKey.ToArray());
                                 }
                                 // clear, should not append
                                 else if (TextEditor.current.CryptMethod == Method.CryptMethod.clear)
@@ -312,17 +314,17 @@ namespace Code
 
                     if (TextEditor.current.CryptFileMethod == Method.CryptFileMethod.file)
                     {
-                        byte[] ByteInput = Encoding.UTF8.GetBytes(TextEditor.current.textbox.ToString());
+                        byte[] ByteInput = Encoding.UTF8.GetBytes(TextEditor.current.UITbText.ToString());
 
                         // custom
                         if (TextEditor.current.CryptMethod == Method.CryptMethod.custom)
                         {
-                            outputByte = code.crypt_code(ByteInput, TextEditor.current.augmentKey.ToArray());
+                            outputByte = cryptByte.crypt_code(ByteInput, TextEditor.current.augmentKey.ToArray());
                         }
                         // AES
                         else if (TextEditor.current.CryptMethod == Method.CryptMethod.AES)
                         {
-                            outputByte = code.AESEncrypt(ByteInput, TextEditor.current.augmentKey.ToArray());
+                            outputByte = AES.AESEncrypt(ByteInput, TextEditor.current.augmentKey.ToArray());
                         }
                         // if the text is clear
                         // should not append
@@ -343,7 +345,7 @@ namespace Code
                 {
                     // if the file isn't xml, it is save in plain text
                     //convert the textbox content in byte[]
-                    outputByte = Encoding.UTF8.GetBytes(TextEditor.current.textbox.Text);
+                    outputByte = Encoding.UTF8.GetBytes(TextEditor.current.UITbText.Text);
                 }
 
                 // save the file
@@ -369,7 +371,7 @@ namespace Code
         public static bool Close()
         {
             // if save == false or content == ""
-            if ((TextEditor.current.saved == false) && (TextEditor.current.textbox.Text != ""))
+            if ((TextEditor.current.saved == false) && (TextEditor.current.UITbText.Text != ""))
             {
                 // debug
                 System.Diagnostics.Debug.WriteLine("Ok, text is not void");

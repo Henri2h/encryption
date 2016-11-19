@@ -7,12 +7,12 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="220" Width="343" ResizeMode="CanMinimize">
     <Grid>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="52" Margin="10,18,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="162"><Run Text="Made By Henri2h"/><LineBreak/><Run Text="Copyright 2016"/></TextBlock>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="52" Margin="10,18,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="162"><Run Text="Made By Henri2h"/></TextBlock>
         <Button x:Name="btText" Content="Launch the text editor" HorizontalAlignment="Stretch" Height="42" Margin="10,135,10,0" VerticalAlignment="Top" Click="btText_Click"/>
-        <StackPanel Margin="10,90,10,71" Orientation="Horizontal">
+        <StackPanel Margin="10,75,10,71" Orientation="Horizontal">
             <TextBlock x:Name="tbInfo" />
             <GridSplitter />
-            <Button x:Name="btDefaultPath" Content="Select default path" Click="btDefaultPath_Click" Width="70"></Button>
+            <Button x:Name="btDefaultPath" Content="Select default path" Click="btDefaultPath_Click"></Button>
         </StackPanel>
     </Grid>
 </Window>

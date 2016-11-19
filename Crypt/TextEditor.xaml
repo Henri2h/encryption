@@ -1,10 +1,11 @@
-﻿<Window xmlns:my="http://schemas.microsoft.com/winfx/2006/xaml/presentation/ribbon"
+﻿<Controls:MetroWindow xmlns:my="http://schemas.microsoft.com/winfx/2006/xaml/presentation/ribbon"
         x:Class="Code.TextEditor"
         
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:local="clr-namespace:Code"
         mc:Ignorable="d"
         Title="TextEditor" Height="800" Width="1000" ContentRendered="Window_ContentRendered" Closing="Window_Closing">
@@ -34,8 +35,8 @@
         <!-- controll bar  -->
         <StackPanel Grid.RowSpan="3">
             <!-- menu -->
-            <Menu x:Name="menu"  Background="#FF7C7A7A">
-                <MenuItem x:Name="File_menu" Header="_File" Width="60" Height="30">
+            <Menu x:Name="menu">
+                <MenuItem x:Name="File_menu" Header="_File" Height="30">
                     <MenuItem x:Name="File_open" Header="_Open" Click="File_open_Click" InputGestureText="Crtl+O"/>
                     <MenuItem x:Name="File_new" Header="_New" Click="File_new_Click" InputGestureText="Crtl+N"/>
                     <MenuItem x:Name="File_save" Header="_Save" Click="File_save_Click" InputGestureText="Crtl+S"/>
@@ -43,14 +44,15 @@
                     <MenuItem x:Name="File_reload" Header="_Reload file" InputGestureText="F5"/>
                     <MenuItem x:Name="File_print" Header="Print file" InputGestureText="Crtl+P" Click="File_print_Click"/>
                 </MenuItem>
-                <MenuItem x:Name="Crypt_menu" Header="_crypt" Width="60" Height="30">
+                <MenuItem x:Name="Crypt_menu" Header="_crypt" Height="30">
                     <MenuItem x:Name="setKey" Header="_Decode" Click="setKey_Click"/>
                     <MenuItem x:Name="enterKey" Click="enterKey_Click" Header="_Crypt"/>
-                    <MenuItem x:Name ="noCode" Header="_no Key" Height="30" Width="Auto" Click="noCode_Click"></MenuItem>
+                    <MenuItem x:Name ="noCode" Header="_no Key" Height="30" Click="noCode_Click"></MenuItem>
                 </MenuItem>
-                <MenuItem Header="_Language" Width="60" Height="30">
+                <MenuItem Header="_Language" Height="30">
                     <MenuItem x:Name="btLanguage" Header="change language" Click="btLanguage_Click"></MenuItem>
                 </MenuItem>
+
             </Menu>
             <Menu x:Name="menu_Files">
                 <MenuItem x:Name="Files_1" Height="30" Width="Auto" Background="#FF2AFF08" Header="this is a test"/>
@@ -73,4 +75,4 @@
         </StatusBar>
 
     </Grid>
-</Window>
+</Controls:MetroWindow>

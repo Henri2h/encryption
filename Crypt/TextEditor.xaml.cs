@@ -5,18 +5,21 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
+using MahApps.Metro.Controls;
+using Code.UI;
+using Code.Core;
+
 namespace Code
 {
     /// <summary>
     /// Logique d'interaction pour TextEditor.xaml
     /// </summary>
     ///
-    public partial class TextEditor : Window
+    public partial class TextEditor : MetroWindow
     {
         public static int selectedTabIndex = 0;
         //tab controll
-        public static customTabItem current;
-        public static List<customTabItem> tabs;
+        public static UI.Tab.TabItem current;
         public static TextEditor inputText;
 
 
@@ -72,7 +75,7 @@ namespace Code
             PrintDialog printDialog = new PrintDialog();
             if (printDialog.ShowDialog() == true)
             {
-                printDialog.PrintVisual(current.textbox, "print content of the textbox");
+                printDialog.PrintVisual(current.UITbText, "print content of the textbox");
             }
         }
         // ===== menu Crypt =====
@@ -146,7 +149,8 @@ namespace Code
         /// </summary>
         public void newTab(string filename)
         {
-            customTabItem newTabCustom = new customTabItem(filename);
+            UI.Tab.TabItem newTabCustom = new UI.Tab.TabItem(filename);
+
 
             current = newTabCustom;
 
@@ -164,87 +168,90 @@ namespace Code
         /// </summary>
         public void define()
         {
-            // ================================ buton save ========================================
-            // enable the save button if isModified == true or disable it if isModified == false
+            if (current != null)
+            {
+                // ================================ buton save ========================================
+                // enable the save button if isModified == true or disable it if isModified == false
 
-            if (current.isModified == true)
-            {
-                File_save.IsEnabled = true;
-            }
-            else
-            {
-                File_save.IsEnabled = false;
-            }
-
-            // ================================ if crypt ==========================================
-            if (current.isCrypt)
-            {
-                tbIsCrypt.Text = "This text is crypt with key = *****";
-            }
-            else
-            {
-                tbIsCrypt.Text = "This text isn't crypted";
-            }
-            // ==================================== header ========================================
-            if (current.isModified)
-            {
-
-                File_menu.Header = "_File*";
-                if (current.fileName != null && current.fileName != "")
+                if (current.isModified == true)
                 {
-                    current.Header = current.fileName + "* ";
-                    Files_1.Header = current.fileName + "* ";
-
+                    File_save.IsEnabled = true;
                 }
                 else
                 {
-                    current.Header = "New File 1*";
-                    Files_1.Header = "New File 1*";
+                    File_save.IsEnabled = false;
                 }
-                Files_1.Background = Brushes.Red;
-            }
-            else
-            {
 
-                current.Header = current.fileName;
-                File_menu.Header = "_File";
-                Files_1.Header = current.fileName;
-                Files_1.Background = Brushes.Green;
-            }
+                // ================================ if crypt ==========================================
+                if (current.isCrypt)
+                {
+                    tbIsCrypt.Text = "This text is crypt with key = *****";
+                }
+                else
+                {
+                    tbIsCrypt.Text = "This text isn't crypted";
+                }
+                // ==================================== header ========================================
+                if (current.isModified)
+                {
 
-            // ================================ define number of lines ============================
+                    File_menu.Header = "_File*";
+                    if (current.fileName != null && current.fileName != "")
+                    {
+                        current.Header = current.fileName + "* ";
+                        Files_1.Header = current.fileName + "* ";
 
-            tbLenght.Text = "Line : " + current.textbox.LineCount.ToString();
-            // ================================ cursor position ===================================
+                    }
+                    else
+                    {
+                        current.Header = "New File 1*";
+                        Files_1.Header = "New File 1*";
+                    }
+                    Files_1.Background = Brushes.Red;
+                }
+                else
+                {
 
-            /*int line = 0;
-            int column = 0;
-            int caret = textBox.CaretIndex;
-            int iLine = textBox.GetLineIndexFromCharacterIndex(caret);
-            if (iLine < 0) iLine = 0;
-            line = iLine;
-            int firstChar = textBox.GetCharacterIndexFromLineIndex(iLine);
-            if (firstChar < 0) firstChar = 0;
-            column = caret - firstChar;*/
-            if (current.textbox.IsKeyboardFocused)
-            {
-                int s = current.textbox.SelectionStart;
-                int y = current.textbox.GetLineIndexFromCharacterIndex(s);
-                int x = s - current.textbox.GetCharacterIndexFromLineIndex(y);
-                x++;
-                y++;
-                tbPosition.Text = "Cursor position = " + x + " Line number = " + y;
-            }
+                    current.Header = current.fileName;
+                    File_menu.Header = "_File";
+                    Files_1.Header = current.fileName;
+                    Files_1.Background = Brushes.Green;
+                }
+
+                // ================================ define number of lines ============================
+
+                tbLenght.Text = "Line : " + current.UITbText.LineCount.ToString();
+                // ================================ cursor position ===================================
+
+                /*int line = 0;
+                int column = 0;
+                int caret = textBox.CaretIndex;
+                int iLine = textBox.GetLineIndexFromCharacterIndex(caret);
+                if (iLine < 0) iLine = 0;
+                line = iLine;
+                int firstChar = textBox.GetCharacterIndexFromLineIndex(iLine);
+                if (firstChar < 0) firstChar = 0;
+                column = caret - firstChar;*/
+                if (current.UITbText.IsKeyboardFocused)
+                {
+                    int s = current.UITbText.SelectionStart;
+                    int y = current.UITbText.GetLineIndexFromCharacterIndex(s);
+                    int x = s - current.UITbText.GetCharacterIndexFromLineIndex(y);
+                    x++;
+                    y++;
+                    tbPosition.Text = "Cursor position = " + x + " Line number = " + y;
+                }
 
 
-            // ================================ is Xml ============================================
-            if (current.isXml)
-            {
-                tbIsXml.Text = "This text is a xml file";
-            }
-            else
-            {
-                tbIsXml.Text = "This text isn't a xml file";
+                // ================================ is Xml ============================================
+                if (current.isXml)
+                {
+                    tbIsXml.Text = "This text is a xml file";
+                }
+                else
+                {
+                    tbIsXml.Text = "This text isn't a xml file";
+                }
             }
         }
 
@@ -260,7 +267,7 @@ namespace Code
         }
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            foreach (customTabItem te in tabControl.Items)
+            foreach (UI.Tab.TabItem te in tabControl.Items)
             {
                 current = te;
                 define();
@@ -291,7 +298,7 @@ namespace Code
         private void tabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             // tabControl.Items[selectedTabIndex] = current;
-            current = tabControl.SelectedItem as customTabItem;
+            current = tabControl.SelectedItem as UI.Tab.TabItem;
             selectedTabIndex = tabControl.Items.IndexOf(current);
             if (current == null)
             {
@@ -309,12 +316,12 @@ namespace Code
             Language inputDialog = new Language();
             if (inputDialog.ShowDialog() == true)
             {
-                current.textbox.Language = inputDialog.language;
+                current.UITbText.Language = inputDialog.language;
                 define();
             }
             else
             {
-                MessageBox.Show("Please select a language " + Environment.NewLine + "curent : " + current.textbox.Language.ToString());
+                MessageBox.Show("Please select a language " + Environment.NewLine + "curent : " + current.UITbText.Language.ToString());
             }
         }
     }

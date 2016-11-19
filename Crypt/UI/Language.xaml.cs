@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Markup;
 
-namespace Code
+namespace Code.UI
 {
     /// <summary>
     /// Interaction logic for Language.xaml
