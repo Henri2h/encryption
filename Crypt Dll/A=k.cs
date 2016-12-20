@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace crypt_dll_aplication
 {
-    
+
     public class A_k
     {
         public static List<Data> letters = new List<Data>();
@@ -20,10 +20,9 @@ namespace crypt_dll_aplication
         private static void settings(int augment)
         {
             total = defTotal(complexe);
-            char[] letter = {
-                'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
-                '1', '2', '3', '4', '5', '6', '7', '8', '9', '0'
-            };
+            char[] letter = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
+            char[] letterMAJ = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+            char[] number = { '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' };
 
             string[] morseCode = { "._", "_...", "_._.", "_..", ".", ".._.", "__.", "....", "..", ".___", "_._" , "._..", "__", "_.", "___", ".__.", "__._", "._.", "...", "_", ".._", "..._", ".__","_.._", "_.__", "__..",
                     ".____","..___", "...__", "...._", ".....", "_....", "__...", "___..", "____.", "_____"

@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using crypt_dll_aplication;
+﻿using System.Collections.Generic;
+
 namespace crypt_dll_aplication
 {
     public class analiticValue

@@ -62,7 +62,7 @@
     <Compile Include="analitycs.cs" />
     <Compile Include="cryptByte.cs" />
     <Compile Include="Data.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Enigma.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
