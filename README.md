@@ -1,5 +1,7 @@
 # Encryption
 
+[![Build status](https://ci.appveyor.com/api/projects/status/uj3cop3w4n1rcn9d?svg=true)](https://ci.appveyor.com/project/Henri2h/encryption)
+
 This project is divided in 4 sub projects :
 
 ##Crypt :
