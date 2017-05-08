@@ -14,11 +14,14 @@ namespace dll_using_sample
         static void Main(string[] args)
         {
             //morse
+            Console.Write("Morse : ");
             string plainMorse = Console.ReadLine();
             string morse = crypt_dll_aplication.A_k.encodeInMorse(plainMorse);
             Console.WriteLine(morse);
             Console.ReadLine();
             Console.Clear();
+
+            Console.Write("Annalise : ");
 
             // analising
             int augment = 10;
