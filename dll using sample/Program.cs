@@ -16,7 +16,7 @@ namespace dll_using_sample
             //morse
             Console.Write("Morse : ");
             string plainMorse = Console.ReadLine();
-            string morse = crypt_dll_aplication.A_k.encodeInMorse(plainMorse);
+            string morse = crypt_dll_aplication.A_k.EncodeInMorse(plainMorse);
             Console.WriteLine(morse);
             Console.ReadLine();
             Console.Clear();
@@ -27,8 +27,8 @@ namespace dll_using_sample
             int augment = 10;
             string plain = Console.ReadLine();
 
-            string encrypted = crypt_dll_aplication.A_k.cryptCustom(plain, augment);
-            string decrypted = crypt_dll_aplication.A_k.decodeCustom(encrypted, augment);
+            string encrypted = crypt_dll_aplication.A_k.CryptCustom(plain, augment);
+            string decrypted = crypt_dll_aplication.A_k.DecodeCustom(encrypted, augment);
 
             Console.WriteLine("Encrypted : " + encrypted);
             Console.WriteLine("Decrypted : " + decrypted);
