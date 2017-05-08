@@ -17,16 +17,18 @@ namespace crypt_dll_aplication
         public static string letterSeparator = "/";
         public static string wordSeperator = "//";
 
+        static char[] letter = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
+        static char[] letterMAJ = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+        static char[] number = { '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' };
+
+        static string[] morseCode = { "._", "_...", "_._.", "_..", ".", ".._.", "__.", "....", "..", ".___", "_._" , "._..", "__", "_.", "___", ".__.", "__._", "._.", "...", "_", ".._", "..._", ".__","_.._", "_.__", "__..",
+                    ".____","..___", "...__", "...._", ".....", "_....", "__...", "___..", "____.", "_____"
+            };
+
         private static void Settings(int augment)
         {
             total = DefTotal(complexe);
-            char[] letter = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
-            char[] letterMAJ = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
-            char[] number = { '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' };
 
-            string[] morseCode = { "._", "_...", "_._.", "_..", ".", ".._.", "__.", "....", "..", ".___", "_._" , "._..", "__", "_.", "___", ".__.", "__._", "._.", "...", "_", ".._", "..._", ".__","_.._", "_.__", "__..",
-                    ".____","..___", "...__", "...._", ".....", "_....", "__...", "___..", "____.", "_____"
-            };
             for (int i = 0; i < letter.Length; i++)
             {
                 augment = AugmentDefine(i + 1, augment);
@@ -126,6 +128,41 @@ namespace crypt_dll_aplication
             int selectedLetterPos = FindLetterPos(letter);
             return letters[selectedLetterPos].morseCode;
         }
+
+        public static string GetFormatedString(string text)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            StringReader sr = new StringReader(text);
+
+            bool read = true;
+            while (read)
+            {
+                string line = sr.ReadLine();
+                if (line == "")
+                {
+                    read = false;
+                    break;
+                }
+
+                foreach (char ch in line)
+                {
+                    if (letter.Contains(ch) || letterMAJ.Contains(ch))
+                    {
+                        char cha = char.ToLower(ch);
+                        sb.Append(cha);
+                    }
+                    else
+                    {
+                        sb.Append(" ");
+                    }
+                }
+
+            }
+
+            return sb.ToString();
+        }
+
         private static int AugmentDefine(int pos, int augment)
         {
             int total = DefTotal(complexe);
