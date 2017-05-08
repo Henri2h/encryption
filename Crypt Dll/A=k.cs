@@ -98,6 +98,41 @@ namespace crypt_dll_aplication
             }
             return Out.ToString();
         }
+        public static string Crypt(string input_public, int augment)
+        {
+            bool first = true;
+
+            StringBuilder sw = new StringBuilder();
+            Settings(augment);
+
+            foreach (char ch in input_public)
+            {
+                if (ch != ' ')
+                {
+                    if (!first)
+                    {
+                        sw.Append(' ');
+                    }
+                    int pos = FindLetterPos(ch);
+                    
+                    if (pos != -1)
+                    {
+                        sw.Append(letter[letters[pos].encryptValue]);
+                    }
+
+                    first = false;
+
+                }
+                else
+                {
+                    sw.Append(' ');
+                    first = true;
+                }
+
+
+            }
+            return sw.ToString();
+        }
 
         // encode in morse
         public static string EncodeInMorse(string text)
