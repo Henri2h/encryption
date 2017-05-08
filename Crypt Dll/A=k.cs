@@ -31,8 +31,12 @@ namespace crypt_dll_aplication
 
             for (int i = 0; i < letter.Length; i++)
             {
-                augment = AugmentDefine(i + 1, augment);
-                Data toAdd = new Data(letter[i], i + 1, i + 1 + augment, morseCode[i]);
+                augment = AugmentDefine(i, augment);
+
+                int encryptedPos = i + augment;
+                if (encryptedPos > 25) { encryptedPos -= 26; }
+
+                Data toAdd = new Data(letter[i], i, encryptedPos, morseCode[i]);
                 letters.Add(toAdd);
             }
 
@@ -100,8 +104,6 @@ namespace crypt_dll_aplication
         }
         public static string Crypt(string input_public, int augment)
         {
-            bool first = true;
-
             StringBuilder sw = new StringBuilder();
             Settings(augment);
 
@@ -109,27 +111,17 @@ namespace crypt_dll_aplication
             {
                 if (ch != ' ')
                 {
-                    if (!first)
-                    {
-                        sw.Append(' ');
-                    }
                     int pos = FindLetterPos(ch);
-                    
+
                     if (pos != -1)
                     {
                         sw.Append(letter[letters[pos].encryptValue]);
                     }
-
-                    first = false;
-
                 }
                 else
                 {
                     sw.Append(' ');
-                    first = true;
                 }
-
-
             }
             return sw.ToString();
         }
@@ -175,7 +167,7 @@ namespace crypt_dll_aplication
             while (read)
             {
                 string line = sr.ReadLine();
-                if (line == null )
+                if (line == null)
                 {
                     read = false;
                     break;
@@ -189,7 +181,7 @@ namespace crypt_dll_aplication
                         char cha = char.ToLower(ch);
                         sb.Append(cha);
                     }
-                    else if(ch == 'é' || ch == 'è')
+                    else if (ch == 'é' || ch == 'è')
                     {
                         sb.Append('e');
                     }

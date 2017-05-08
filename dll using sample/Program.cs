@@ -71,7 +71,7 @@ namespace dll_using_sample
             string password = Console.ReadLine();
             int augment = int.Parse(password);
 
-            string encrypted = crypt_dll_aplication.A_k.CryptCustom(plain, augment);
+            string encrypted = crypt_dll_aplication.A_k.Crypt(plain, augment);
 
             File.WriteAllText(@"D:\encrypted.txt", encrypted);
         }
