@@ -16,6 +16,8 @@ namespace dll_using_sample
             //morse
             Console.Write("Morse : ");
             string plainMorse = Console.ReadLine();
+            plainMorse = crypt_dll_aplication.A_k.GetFormatedString(plainMorse);
+            Console.WriteLine("Formated string : " + plainMorse);
             string morse = crypt_dll_aplication.A_k.EncodeInMorse(plainMorse);
             Console.WriteLine(morse);
             Console.ReadLine();
@@ -26,6 +28,9 @@ namespace dll_using_sample
             // analising
             int augment = 10;
             string plain = Console.ReadLine();
+            plain = crypt_dll_aplication.A_k.GetFormatedString(plain);
+
+            Console.WriteLine("Formated string : " + plain);
 
             string encrypted = crypt_dll_aplication.A_k.CryptCustom(plain, augment);
             string decrypted = crypt_dll_aplication.A_k.DecodeCustom(encrypted, augment);
@@ -44,7 +49,7 @@ namespace dll_using_sample
             Console.ReadKey();
         }
 
-        public static void analize(string text)
+        public static void Analize(string text)
         {
             analiticValue[] frequency = crypt_dll_aplication.analitycs.analizeFrequency(text);
 

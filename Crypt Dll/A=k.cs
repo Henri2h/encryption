@@ -132,18 +132,20 @@ namespace crypt_dll_aplication
         public static string GetFormatedString(string text)
         {
             StringBuilder sb = new StringBuilder();
-
             StringReader sr = new StringReader(text);
 
             bool read = true;
+            bool newLine = false;
+
             while (read)
             {
                 string line = sr.ReadLine();
-                if (line == "")
+                if (line == null )
                 {
                     read = false;
                     break;
                 }
+                if (newLine == true) { sb.AppendLine(); }
 
                 foreach (char ch in line)
                 {
@@ -152,11 +154,28 @@ namespace crypt_dll_aplication
                         char cha = char.ToLower(ch);
                         sb.Append(cha);
                     }
+                    else if(ch == 'é' || ch == 'è')
+                    {
+                        sb.Append('e');
+                    }
+                    else if (ch == 'à')
+                    {
+                        sb.Append('a');
+                    }
+                    else if (ch == 'ç')
+                    {
+                        sb.Append('c');
+                    }
+                    else if (ch == 'ù')
+                    {
+                        sb.Append('u');
+                    }
                     else
                     {
                         sb.Append(" ");
                     }
                 }
+                newLine = true;
 
             }
 
