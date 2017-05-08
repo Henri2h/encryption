@@ -13,6 +13,16 @@ namespace dll_using_sample
     {
         static void Main(string[] args)
         {
+            string input = "";
+            while (input != "exit")
+            {
+                input = Console.ReadLine();
+                if (input == "encrypt") {
+                    Encrypt();
+
+                }
+            }
+
             //morse
             Console.Write("Morse : ");
             string plainMorse = Console.ReadLine();
@@ -47,6 +57,23 @@ namespace dll_using_sample
             File.WriteAllText(@"D:\plainMorse.txt", plainMorse);
 
             Console.ReadKey();
+        }
+
+        public static void Encrypt()
+        {
+            Console.Write("Text : ");
+            string plain = Console.ReadLine();
+            plain = crypt_dll_aplication.A_k.GetFormatedString(plain);
+
+            Console.WriteLine("Formated string : " + plain);
+
+            Console.Write("Augment : ");
+            string password = Console.ReadLine();
+            int augment = int.Parse(password);
+
+            string encrypted = crypt_dll_aplication.A_k.CryptCustom(plain, augment);
+
+            File.WriteAllText(@"D:\encrypted.txt", encrypted);
         }
 
         public static void Analize(string text)
