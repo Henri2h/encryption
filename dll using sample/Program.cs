@@ -34,14 +34,13 @@ namespace dll_using_sample
                 {   //morse
                     Console.Write("Morse : ");
 
-                    string plainMorse = Console.ReadLine();
+                    string plainMorse =  File.ReadAllText(@"D:\plainMorse.txt");
                     plainMorse = crypt_dll_aplication.A_k.GetFormatedString(plainMorse);
                     Console.WriteLine("Formated string : " + plainMorse);
                     string morse = crypt_dll_aplication.A_k.EncodeInMorse(plainMorse);
 
                     //morse
                     File.WriteAllText(@"D:\morse.txt", morse);
-                    File.WriteAllText(@"D:\plainMorse.txt", plainMorse);
 
                     Console.WriteLine(morse);
                     Console.ReadLine();

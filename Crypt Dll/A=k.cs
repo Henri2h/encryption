@@ -152,8 +152,12 @@ namespace crypt_dll_aplication
 
         public static string ReturnMorse(char letter)
         {
-            int selectedLetterPos = FindLetterPos(letter);
-            return letters[selectedLetterPos].morseCode;
+            if (letter != '\r' && letter != '\n')
+            {
+                int selectedLetterPos = FindLetterPos(letter);
+                return letters[selectedLetterPos].morseCode;
+            }
+            return letter.ToString();
         }
 
         public static string GetFormatedString(string text)
@@ -197,7 +201,7 @@ namespace crypt_dll_aplication
                     {
                         sb.Append('u');
                     }
-                    else
+                    else if(ch == ' ')
                     {
                         sb.Append(" ");
                     }
