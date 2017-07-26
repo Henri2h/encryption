@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.HockeyApp;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,8 +27,14 @@ namespace Code
 
         public MainWindow()
         {
+            LaunchHockeyReportingAsync();
             InitializeComponent();
             loadDefault();
+        }
+        public async void LaunchHockeyReportingAsync()
+        {
+            HockeyClient.Current.Configure("00fcc608b8904e13a9c6ea4c4ebfa762");
+            await HockeyClient.Current.SendCrashesAsync();
         }
 
 

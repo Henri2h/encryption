@@ -149,17 +149,17 @@ namespace Code
         /// </summary>
         public void newTab(string filename)
         {
-            UI.Tab.TabItem newTabCustom = new UI.Tab.TabItem(filename);
 
+            var newTabCustom = new UI.Tab.AnaliticsView();
 
-            current = newTabCustom;
-
+       //     UI.Tab.TabItem newTabCustom = new UI.Tab.TabItem(filename);
+         //   current = newTabCustom;
             tabControl.Items.Add(newTabCustom);
             tabControl.SelectedItem = newTabCustom;
 
             selectedTabIndex = tabControl.Items.IndexOf(current);
 
-            define();
+          //  define();
 
         }
 

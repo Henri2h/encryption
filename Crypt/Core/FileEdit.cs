@@ -389,15 +389,15 @@ namespace Code.Core
                     if (Save())
                     {
                         TextEditor.inputText.define();
-                        TextEditor.current.remove();
+                        TextEditor.current.Remove();
                     }
                 }
                 // if didn't want to save
-                if (output_string == "No") { TextEditor.current.remove(); }
+                if (output_string == "No") { TextEditor.current.Remove(); }
             }
             else
             {
-                TextEditor.current.remove();
+                TextEditor.current.Remove();
             }
             return true;
         }

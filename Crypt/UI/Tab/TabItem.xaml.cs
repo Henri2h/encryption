@@ -32,17 +32,28 @@ namespace Code.UI.Tab
 
         public string fileName;
         public List<byte> augmentKey = new List<byte>();
-        
-        private string name;
 
-        public TabItem(string fileNameInput = "new tab")
+        private string name;
+        private const string defaultName = "new tab";
+
+        public TabItem(string fileNameInput = defaultName)
         {
 
             InitializeComponent();
-            this.Header = fileNameInput;
+            if (fileNameInput != defaultName)
+            {
+                this.Header = System.IO.Path.GetFileName(fileNameInput);
+            }
+            else
+            {
+                this.Header = fileNameInput;
+            }
+
             UITbText.SpellCheck.IsEnabled = true;
-            FrameworkElement input = new FrameworkElement();
-            input.Language = System.Windows.Markup.XmlLanguage.GetLanguage("fr-FR");
+            FrameworkElement input = new FrameworkElement()
+            {
+                Language = System.Windows.Markup.XmlLanguage.GetLanguage("fr-FR")
+            };
             UITbText.Language = input.Language;
 
             fileName = fileNameInput;
@@ -53,28 +64,27 @@ namespace Code.UI.Tab
             CryptMethod = Method.CryptMethod.clear;
             tabCount++;
         }
-        public bool create()
-        {
-
-            return true;
-        }
-
-        public bool close()
+        public bool Create()
         {
             return true;
         }
-        public bool remove()
+
+        public bool Close()
+        {
+            return true;
+        }
+
+        public bool Remove()
         {
             // tabControl.Items.Remove(selectedTabItem);
             return true;
         }
+
         public string NameFile
         {
             get { return name; }
             set { name = value; }
         }
-
-
 
         private void UITbText_SelectionChanged(object sender, RoutedEventArgs e)
         {
@@ -87,6 +97,7 @@ namespace Code.UI.Tab
             isModified = true;
             TextEditor.inputText.define();
         }
+
         ~TabItem() { tabCount--; }
     }
 }

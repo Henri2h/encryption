@@ -28,12 +28,12 @@
 
     <Grid x:Name="grid">
         <Grid.RowDefinitions>
-            <RowDefinition Height="70*"/>
-            <RowDefinition Height="665*"/>
-            <RowDefinition Height="34*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <!-- controll bar  -->
-        <StackPanel Grid.RowSpan="3">
+        <StackPanel Grid.Row="0">
             <!-- menu -->
             <Menu x:Name="menu">
                 <MenuItem x:Name="File_menu" Header="_File" Height="30">
@@ -61,10 +61,15 @@
             <!-- item menu -->
         </StackPanel>
         <!-- tab controll generated automaticly with new tab-->
-        <TabControl x:Name="tabControl" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" SelectionChanged="tabControl_SelectionChanged" Background="White" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Row="1"/>
+        <TabControl x:Name="tabControl" 
+                    VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                    SelectionChanged="tabControl_SelectionChanged" 
+                    Background="White"
+                    ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                    Grid.Row="1"/>
 
         <!-- status bar-->
-        <StatusBar HorizontalAlignment="Stretch" Grid.Row="2" VerticalAlignment="Stretch" Width="Auto">
+        <StatusBar HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Grid.Row="2" Width="Auto">
             <TextBlock x:Name="tbLenght"/>
             <Separator/>
             <TextBlock x:Name="tbPosition"/>
